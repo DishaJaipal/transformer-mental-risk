@@ -1,4 +1,4 @@
-from utils.generate_wordcloud import WordCloud
+from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import pandas as pd
 
