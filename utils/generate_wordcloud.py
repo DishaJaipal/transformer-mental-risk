@@ -3,7 +3,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Load your processed dataset
-df = pd.read_csv("../data/full_goemotions.csv")  # or use df directly if in same script
+df = pd.read_csv(
+    "../data/processed/full_goemotions_1.csv"
+)  # or use df directly if in same script
 
 # Join all clean text into one string
 text_data = " ".join(df["clean_text"].astype(str))
@@ -23,5 +25,3 @@ plt.imshow(wordcloud, interpolation="bilinear")
 plt.axis("off")
 plt.title("Word Cloud of Cleaned Text Data", fontsize=16)
 plt.show()
-
-print(f"✅ WordCloud saved at {output_path}")
