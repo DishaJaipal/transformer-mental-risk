@@ -1,0 +1,17 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+__pycache__/
+*.pyc
+*.pyo
+
+venv/
+
+data/processed/*.npy
+data/processed/*.pkl
+data/processed/*.png
+
+models/*.pkl
+
+.vscode/
+
+*.log
+eval_report.txt
