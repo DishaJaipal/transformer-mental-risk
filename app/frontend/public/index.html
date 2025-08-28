@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindCare AI - Mental Health Detection System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-brain"></i>
+                    <h1>Mental Health Insights</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn--outline theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn btn--primary emergency-btn" id="emergencyBtn">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Emergency Help
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Mental Health Insights</h2>
+                    <p>Enter your thoughts, social media posts, or any text to receive personalized mental health insights and resources.</p>
+                </div>
+            </section>
+
+            <!-- Analysis Form -->
+            <section class="analysis-section">
+                <div class="card analysis-card">
+                    <div class="card__body">
+                        <h3>Share Your Thoughts</h3>
+                        <form id="analysisForm" class="analysis-form" method="post">
+                            <div class="form-group">
+                                <label for="textInput" class="form-label">
+                                    Enter your thoughts, feelings, or any text you'd like analyzed:
+                                </label>
+                                <textarea 
+                                    id="textInput" 
+                                    class="form-control text-input" 
+                                    placeholder="Share what's on your mind... The more you share, the better our AI can help you."
+                                    rows="6"
+                                    required
+                                ></textarea>
+                                <div class="input-helper">
+                                    <span class="char-count" id="charCount">0 characters</span>
+                                    <!-- <span class="privacy-note">
+                                        <i class="fas fa-lock"></i>
+                                        Your data is processed securely and privately
+                                    </span> -->
+                                </div>
+                                                            </div>
+                            <button type="submit" class="btn btn--primary btn--lg analyze-btn" id="analyzeBtn">
+                                <span class="btn-content">
+                                    <i class="fas fa-brain"></i>
+                                    Analyze Mental State
+                                </span>
+                                <span class="btn-loading hidden">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    Analyzing...
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section hidden" id="resultsSection">
+                <div class="card results-card">
+                    <div class="card__header">
+                        <h3>Analysis Results</h3>
+                        <div class="results-timestamp" id="resultsTimestamp"></div>
+                    </div>
+                    <div class="card__body">
+                        <div class="results-grid">
+                            <!-- Emotional State -->
+                            <div class="result-item">
+                                <div class="result-label">Emotional State</div>
+                                <div class="result-value emotional-state" id="emotionalState">
+                                    <span class="state-text"></span>
+                                    <span class="state-icon"></span>
+                                </div>
+                            </div>
+
+                            <!-- Confidence Score -->
+                            <div class="result-item">
+                                <div class="result-label">Confidence Score</div>
+                                <div class="result-value confidence-score" id="confidenceScore">
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill"></div>
+                                    </div>
+                                    <span class="confidence-text"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Recommendations -->
+                        <div class="explanation-section">
+                            <h4>AI Recommendations</h4>
+                            <p id="analysisExplanation"></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+            <!-- History Section -->
+            <section class="history-section">
+                <div class="card history-card">
+                    <div class="card__header">
+                        <h3>Recent Analyses</h3>
+                        <button class="btn btn--outline btn--sm" id="clearHistoryBtn">
+                            <i class="fas fa-trash"></i>
+                            Clear History
+                        </button>
+                    </div>
+                    <div class="card__body">
+                        <div class="history-list" id="historyList">
+                            <div class="history-empty">
+                                <i class="fas fa-history"></i>
+                                <p>No previous analyses yet. Start by sharing your thoughts above.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Emergency Modal -->
+    <div class="modal hidden" id="emergencyModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Emergency Mental Health Resources</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="emergency-resources">
+                    <div class="emergency-item urgent">
+                        <div class="emergency-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="emergency-content">
+                            <h4>National Suicide Prevention Lifeline</h4>
+                            <p>24/7 crisis support</p>
+                            <a href="tel:988" class="emergency-link">Call 988</a>
+                        </div>
+                    </div>
+                    <div class="emergency-item urgent">
+                        <div class="emergency-icon">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <div class="emergency-content">
+                            <h4>Crisis Text Line</h4>
+                            <p>Text HOME to connect with a counselor</p>
+                            <a href="sms:741741" class="emergency-link">Text 741741</a>
+                        </div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <div class="emergency-content">
+                            <h4>Emergency Services</h4>
+                            <p>For immediate medical emergencies</p>
+                            <a href="tel:911" class="emergency-link">Call 911</a>
+                        </div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="emergency-content">
+                            <h4>SAMHSA National Helpline</h4>
+                            <p>Mental health and substance abuse</p>
+                            <a href="tel:1-800-662-4357" class="emergency-link">1-800-662-HELP</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About/Disclaimer Section -->
+    <section class="disclaimer-section">
+        <div class="container">
+            <div class="card disclaimer-card">
+                <div class="card__body">
+                    <div class="disclaimer-content">
+                        <h4>Important Disclaimer</h4>
+                        <p>
+                            <strong>This tool is for informational purposes only and should not replace professional medical advice.</strong>
+                            If you're experiencing a mental health crisis, please contact emergency services or a mental health professional immediately.
+                            Our AI analysis is based on text patterns and should be used as a supplement to, not a replacement for, professional healthcare.
+                        </p>
+                        <div class="disclaimer-features">
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Privacy Protected</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-robot"></i>
+                                <span>Analysis</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-heart"></i>
+                                <span>Evidence-Based Resources</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
