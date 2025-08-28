@@ -24,25 +24,30 @@ git clone <repo-url>
 cd transformer-mental-risk
 
 2. **Create virtual environment**
+```bash
 python -m venv venv
 venv\Scripts\activate  # Windows
 source venv/bin/activate  # Linux/Mac
 
 3. **Install dependencies**
+```bash
 pip install -r requirements.txt
 
 4. **Set environment variables**
+```bash
 # Create .env file
 COHERE_API_KEY=your_cohere_api_key_here
 
 5. **Run application**
+```bash
 cd app/backend
 python app.py
 
 6. **Access application**
+```bash
  Open http://localhost:5000 in your browser
 
-Usage:
+##Usage:
 -Enter text in the input field
 
 -Click "Analyze Mental State"
@@ -51,7 +56,7 @@ Usage:
 
 -Read AI-generated recommendations
 
-Models
+##Models
 Text Preprocessing: NLTK tokenization, stemming, stopword removal
 
 Feature Extraction: BERT embedding(All-MiniLM-L6-v2) + Random Forest 
@@ -60,7 +65,7 @@ Classification: Final Classifier ensemble
 
 Output: Binary classification (0=Normal,1=Depression) with confidence scores
 
-API Endpoints:
+##API Endpoints:
 
 GET / - Serve web interface
 
@@ -68,5 +73,5 @@ POST /analyze - Analyze text and return results
 
 GET /health - Health check endpoint
 
-License
+##License
 MIT License
