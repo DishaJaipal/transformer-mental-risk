@@ -22,31 +22,31 @@ A hybrid transformer-based framework for early detection of mental health risks 
 ```bash
 git clone <repo-url>
 cd transformer-mental-risk
-
+```
 2. **Create virtual environment**
 ```bash
 python -m venv venv
 venv\Scripts\activate  # Windows
 source venv/bin/activate  # Linux/Mac
-
+```
 3. **Install dependencies**
 ```bash
 pip install -r requirements.txt
-
+```
 4. **Set environment variables**
 ```bash
 # Create .env file
 COHERE_API_KEY=your_cohere_api_key_here
-
+```
 5. **Run application**
 ```bash
 cd app/backend
 python app.py
-
+```
 6. **Access application**
 ```bash
  Open http://localhost:5000 in your browser
-
+```
 ##Usage:
 -Enter text in the input field
 
