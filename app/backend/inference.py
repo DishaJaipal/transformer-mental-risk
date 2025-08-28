@@ -7,7 +7,7 @@ from nltk.stem import PorterStemmer
 from sentence_transformers import SentenceTransformer
 
 
-nltk.download("stopwords")
+nltk.download("stopwords", quiet=True, raise_on_error=True)
 stop_words = set(stopwords.words("english"))
 stemmer = PorterStemmer()
 
@@ -46,8 +46,11 @@ def clean_text(text):
 
 bert_model = SentenceTransformer("All-MiniLM-L6-v2")
 
-rf = joblib.load("../models/random_forest.pkl")
-clf = joblib.load("../models/final_classifier.pkl")
+with open(r"../../models/random_forest.pkl", "rb") as f:
+    rf = joblib.load(f)
+
+with open(r"../../models/final_classifier.pkl", "rb") as f:
+    clf = joblib.load(f)
 
 
 def predict_emotion(text: str) -> dict:
