@@ -4,7 +4,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split, KFold, cross_val_score
 import joblib
 
-X = np.load("../data/processed/rf_prob_features.npy")  # Probabilistic features from RF
+X = np.load("../data/processed/rf_prob_features.npy")
 labels_df = pd.read_csv("../data/processed/full_goemotions_1.csv")
 y = labels_df["depressed"].values
 
@@ -24,7 +24,6 @@ lr_model.fit(X_train, y_train)
 
 test_accuracy = lr_model.score(X_test, y_test)
 print("Test Set Accuracy:", test_accuracy)
-import pickle
 
 with open("../models/final_classifier.pkl", "wb") as f:
-    pickle.dump(lr_model, f)
+    joblib.dump(lr_model, f)
